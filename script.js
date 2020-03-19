@@ -8,10 +8,10 @@ function generatePassword() {
 
   // Array of password criteria -- each type is its own array
   var passwordCriteria = [
-    ["a", "b", "c" , "d", "e", "f", "g", "h"],
-    ["A", "B", "C", "D", "E", "F", "G", "H"],
+    ["a", "b", "c" , "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
+    ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
-    ["(", ")", "/", "-", "+", ".", "*", ">"],
+    ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "{", "}", "[", "]", "|", ":", ";", "<", ">", ",", ".", "?", "/"],
   ]
   
   // WHEN prompted for password criteria
@@ -36,7 +36,11 @@ function generatePassword() {
   // WHEN prompted for character types to include in the password
   // THEN I choose lowercase, uppercase, numeric, and/or special characters
   var charTypes = ["lowercase", "uppercase", "numeric", "special characters"];
+
+  // WHEN I answer each prompt
+  // THEN my input should be validated and at least one character type should be selected
   var charTypesConfirms = [];
+
   for (var i = 0; i < charTypes.length; i++) {
     var charTypesConfirm = confirm("Do you want to include " + charTypes[i] + " in the password?");
     charTypesConfirms.push(charTypesConfirm);
@@ -50,8 +54,7 @@ function generatePassword() {
   }
   console.log(userCriteria);
   
-  // WHEN I answer each prompt
-  // THEN my input should be validated and at least one character type should be selected
+  
   // WHEN all prompts are answered
   // THEN a password is generated that matches the selected criteria
   var userPassword = [];
