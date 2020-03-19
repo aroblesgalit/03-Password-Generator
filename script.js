@@ -24,14 +24,13 @@ function generatePassword() {
   // THEN I choose a length of at least 8 characters and no more than 128 characters
   var minLength = prompt("How SHORT do you want your password to be? (Please enter a numerical value)");
   minLength = parseInt(minLength);
-  // alert("You typed: " + minLength);
+
   var maxLength = prompt("How LONG do you want your password to be? (Please enter a numerical value higher than your previous input)");
   maxLength = parseInt(maxLength);
-  // alert("You typed: " + maxLength);
+
 
   // Choose length using user's input for minLength and maxLength
   var passwordLength = Math.floor(Math.random() * (maxLength - minLength) + minLength);
-  console.log(passwordLength);
 
   // WHEN prompted for character types to include in the password
   // THEN I choose lowercase, uppercase, numeric, and/or special characters
@@ -39,8 +38,11 @@ function generatePassword() {
 
   // WHEN I answer each prompt
   // THEN my input should be validated and at least one character type should be selected
+
+  // Store boolean values for each charType item -- for example ==> [true, false, true, true]
   var charTypesConfirms = [];
 
+  // Prompts for each charType
   for (var i = 0; i < charTypes.length; i++) {
     var charTypesConfirm = confirm("Do you want to include " + charTypes[i] + " in the password?");
     charTypesConfirms.push(charTypesConfirm);
@@ -52,11 +54,11 @@ function generatePassword() {
       userCriteria.push(passwordCriteria[i])
     }
   }
-  console.log(userCriteria);
-  
   
   // WHEN all prompts are answered
   // THEN a password is generated that matches the selected criteria
+
+  // Create array of randomly chosen chars from user's criteria
   var userPassword = [];
   
   for (var i = 0; i < passwordLength; i++) {
@@ -71,9 +73,10 @@ function generatePassword() {
     userPassword.push(char);
   }
 
+  // Turn userPassword array to a string
   userPassword = userPassword.join("");
-  console.log(userPassword);
 
+  // Return userPassword
   return userPassword;
 
   // WHEN the password is generated
