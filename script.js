@@ -27,7 +27,7 @@ function generatePassword() {
 
     // Only continue if the above value is a number greater than the minimum
     if (maxLength > minLength) {
-      
+
       // Randomly choose a value between min and max for password length
       var passwordLength = Math.floor(Math.random() * (maxLength - minLength) + minLength);
 
@@ -50,30 +50,38 @@ function generatePassword() {
         }
       }
 
-      // Create array of randomly chosen chars from user's criteria
-      var userPassword = [];
+      // Only continue if user said 'ok' to at least one of the character type
+      if (charTypesConfirms[0] == true || charTypesConfirms[1] == true || charTypesConfirms[2] == true || charTypesConfirms[3] == true) {
+        // Create array of randomly chosen chars from user's criteria
+        var userPassword = [];
 
-      // Loop through userCriteria array for characters to use for user password
-      for (var i = 0; i < passwordLength; i++) {
+        // Loop through userCriteria array for characters to use for user password
+        for (var i = 0; i < passwordLength; i++) {
 
-        // Go through userCriteria and choose a number between 0 and length of the array
-        var arrayTypeRandomNum = Math.floor(Math.random() * userCriteria.length);
+          // Go through userCriteria and choose a number between 0 and length of the array
+          var arrayTypeRandomNum = Math.floor(Math.random() * userCriteria.length);
 
-        // Use above's number to choose another number between 0 and length of the array's array
-        var charTypeRandomNum = Math.floor(Math.random() * userCriteria[arrayTypeRandomNum].length);
+          // Use above's number to choose another number between 0 and length of the array's array
+          var charTypeRandomNum = Math.floor(Math.random() * userCriteria[arrayTypeRandomNum].length);
 
-        // Use above's number to choose a character
-        var char = userCriteria[arrayTypeRandomNum][charTypeRandomNum];
+          // Use above's number to choose a character
+          var char = userCriteria[arrayTypeRandomNum][charTypeRandomNum];
 
-        // Push character into userPassword array and start the loop again until passwordLength is reached
-        userPassword.push(char);
+          // Push character into userPassword array and start the loop again until passwordLength is reached
+          userPassword.push(char);
+        }
+
+        // Turn userPassword array to a string
+        userPassword = userPassword.join("");
+
+        // Return userPassword
+        return userPassword;
+
+        // If user said 'no' to all character types, then don't continue
+      } else {
+        alert("You must choose at least one character type.");
+        return "Try again!";
       }
-
-      // Turn userPassword array to a string
-      userPassword = userPassword.join("");
-
-      // Return userPassword
-      return userPassword;
 
     } else if (maxLength == minLength || maxLength < minLength) {
       alert("Please choose a number greater than the minimum.");
