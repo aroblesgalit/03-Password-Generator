@@ -36,5 +36,5 @@ THEN the password is either displayed in an alert or written to the page
 ```
 
 ## Screenshots
-![Screenshot of a prompt](https://github.com/aroblesgalit/03-Password-Generator/blob/master/Assets/Images/generated.JPG)
-![Screenshot of a generated password](https://github.com/aroblesgalit/03-Password-Generator/blob/master/Assets/Images/prompt.JPG)
+![Screenshot of a prompt](https://github.com/aroblesgalit/03-Password-Generator/blob/master/Assets/Images/prompt.JPG)
+![Screenshot of a generated password](https://github.com/aroblesgalit/03-Password-Generator/blob/master/Assets/Images/generated.JPG)
