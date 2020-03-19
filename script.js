@@ -22,10 +22,10 @@ function generatePassword() {
 
   // WHEN prompted for the length of the password
   // THEN I choose a length of at least 8 characters and no more than 128 characters
-  var minLength = prompt("How SHORT do you want your password to be? (Please enter a numerical value)");
+  var minLength = prompt("How SHORT do you want your password to be?", "Please enter a numerical value");
   minLength = parseInt(minLength);
 
-  var maxLength = prompt("How LONG do you want your password to be? (Please enter a numerical value higher than your previous input)");
+  var maxLength = prompt("How LONG do you want your password to be?", "Please enter a numerical value higher than your previous input");
   maxLength = parseInt(maxLength);
 
 
