@@ -14,15 +14,20 @@ function generatePassword() {
   // User's selected criteria
   var userCriteria = [];
 
-  // Prompt user for min and max lengths for password
+  // Prompt user for a minimum value for password length
   var minLength = prompt("What's the minimum value for the password?", "Please enter a number.");
   minLength = parseInt(minLength);
 
+  // Only continue when above value is a number greater than 0
   if (minLength > 0) {
+
+    // Prompt user for a maximum value for password length
     var maxLength = prompt("What's the maximum value for the password?", "Please enter a number greater than your previous input.");
     maxLength = parseInt(maxLength);
 
+    // Only continue if the above value is a number greater than the minimum
     if (maxLength > minLength) {
+      
       // Randomly choose a value between min and max for password length
       var passwordLength = Math.floor(Math.random() * (maxLength - minLength) + minLength);
 
