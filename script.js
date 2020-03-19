@@ -2,9 +2,6 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
-  // GIVEN I need a new, secure password
-  // WHEN I click the button to generate a password
-  // THEN I am presented with a series of prompts for password criteria
 
   // Array of password criteria -- each type is its own array
   var passwordCriteria = [
@@ -14,32 +11,24 @@ function generatePassword() {
     ["~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "+", "=", "{", "}", "[", "]", "|", ":", ";", "<", ">", ",", ".", "?", "/"],
   ]
   
-  // WHEN prompted for password criteria
-  // THEN I select which criteria to include in the password
-
   // User's selected criteria
   var userCriteria = [];
 
-  // WHEN prompted for the length of the password
-  // THEN I choose a length of at least 8 characters and no more than 128 characters
-  var minLength = prompt("How SHORT do you want your password to be?", "Please enter a numerical value");
+  // Prompt user for min and max lengths for password
+  var minLength = prompt("What's the minimum value for the password?", "Please enter a number.");
   minLength = parseInt(minLength);
 
-  var maxLength = prompt("How LONG do you want your password to be?", "Please enter a numerical value higher than your previous input");
+  var maxLength = prompt("What's the maximum value for the password?", "Please enter a number greater than your previous input.");
   maxLength = parseInt(maxLength);
 
-
-  // Choose length using user's input for minLength and maxLength
+  // Randomly choose a value between min and max for password length
   var passwordLength = Math.floor(Math.random() * (maxLength - minLength) + minLength);
 
-  // WHEN prompted for character types to include in the password
-  // THEN I choose lowercase, uppercase, numeric, and/or special characters
+  // Create array of character types
   var charTypes = ["lowercase", "uppercase", "numeric", "special characters"];
 
-  // WHEN I answer each prompt
-  // THEN my input should be validated and at least one character type should be selected
 
-  // Store boolean values for each charType item -- for example ==> [true, false, true, true]
+  // Store boolean values for each charType item based on user's input -- for example ==> [true, false, true, true]
   var charTypesConfirms = [];
 
   // Prompts for each charType
@@ -48,28 +37,29 @@ function generatePassword() {
     charTypesConfirms.push(charTypesConfirm);
   }
   
-  // Push true charTypes into userCriteria
+  // Push 'true' charTypes from passwordCriteria into userCriteria array
   for (var i = 0; i < charTypesConfirms.length; i++) {
     if (charTypesConfirms[i]) {
       userCriteria.push(passwordCriteria[i])
     }
   }
   
-  // WHEN all prompts are answered
-  // THEN a password is generated that matches the selected criteria
-
   // Create array of randomly chosen chars from user's criteria
   var userPassword = [];
   
+  // Loop through userCriteria array for characters to use for user password
   for (var i = 0; i < passwordLength; i++) {
     
-    // Go through userCriteria and randomly choose characters
+    // Go through userCriteria and choose a number between 0 and length of the array
     var arrayTypeRandomNum = Math.floor(Math.random() * userCriteria.length);
     
+    // Use above's number to choose another number between 0 and length of the array's array
     var charTypeRandomNum = Math.floor(Math.random() * userCriteria[arrayTypeRandomNum].length);
 
+    // Use above's number to choose a character
     var char = userCriteria[arrayTypeRandomNum][charTypeRandomNum];
 
+    // Push character into userPassword array and start the loop again until passwordLength is reached
     userPassword.push(char);
   }
 
@@ -79,8 +69,6 @@ function generatePassword() {
   // Return userPassword
   return userPassword;
 
-  // WHEN the password is generated
-  // THEN the password is either displayed in an alert or written to the page
 }
 
 // Write password to the #password input
